@@ -1,18 +1,23 @@
-require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
+local status_ok, nvim_tree = pcall(require, "nvim-tree")
+if not status_ok then
+  return
+end
+
+nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
   auto_reload_on_write = true,
   disable_netrw = false,
   hijack_cursor = false,
   hijack_netrw = true,
   hijack_unnamed_buffer_when_opening = false,
   ignore_buffer_on_setup = false,
-  open_on_setup = true,
-  open_on_setup_file = true,
+  open_on_setup = false,
+  open_on_setup_file = false,
   open_on_tab = true,
   sort_by = "name",
   update_cwd = false,
   reload_on_bufenter = false,
   view = {
-    width = 30,
+    width = 20,
     height = 30,
     hide_root_folder = false,
     side = "right",

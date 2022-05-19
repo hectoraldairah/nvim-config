@@ -39,5 +39,10 @@ return require('packer').startup(function()
     },
     tag = 'nightly' -- optional, updated every week. (see issue #1193)
 } 
+
+ -- COC
+ use {'neoclide/coc.nvim', branch = 'release'}
+
+ -- Colorizer
 end)
 
