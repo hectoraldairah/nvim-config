@@ -1,0 +1,7 @@
+require('options')
+require('keymappings')
+require('plugins')
+require('colorscheme')
+require('telescope')
+require('airline')
+require('nvimtree')
