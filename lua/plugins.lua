@@ -32,17 +32,18 @@ return require('packer').startup(function()
   use { 'glepnir/dashboard-nvim' }
 
   -- Nvim tree  
-  use {
-    'kyazdani42/nvim-tree.lua',
-    requires = {
-      'kyazdani42/nvim-web-devicons', -- optional, for file icon
-    },
-    tag = 'nightly' -- optional, updated every week. (see issue #1193)
-} 
+  use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons', }, tag = 'nightly' } 
 
- -- COC
- use {'neoclide/coc.nvim', branch = 'release'}
+  -- COC
+  use {'neoclide/coc.nvim', branch = 'release'}
 
- -- Colorizer
+  -- Tranparent Mode
+  use { 'xiyaowong/nvim-transparent'}
+
+  -- FloatTerm
+  use { 'voldikss/vim-floaterm' } 
+
+  -- Nunjucks Support
+  use { 'glench/vim-jinja2-syntax'}
 end)
 
