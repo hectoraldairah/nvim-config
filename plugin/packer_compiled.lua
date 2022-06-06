@@ -93,10 +93,10 @@ _G.packer_plugins = {
     path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/everforest",
     url = "https://github.com/sainnhe/everforest"
   },
-  ["nvim-colorizer.lua"] = {
+  ["nvim-transparent"] = {
     loaded = true,
-    path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
-    url = "https://github.com/norcalli/nvim-colorizer.lua"
+    path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/nvim-transparent",
+    url = "https://github.com/xiyaowong/nvim-transparent"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -128,10 +128,15 @@ _G.packer_plugins = {
     path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  ["vim-airline"] = {
+  ["vim-floaterm"] = {
     loaded = true,
-    path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/vim-airline",
-    url = "https://github.com/vim-airline/vim-airline"
+    path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/vim-floaterm",
+    url = "https://github.com/voldikss/vim-floaterm"
+  },
+  ["vim-jinja2-syntax"] = {
+    loaded = true,
+    path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/vim-jinja2-syntax",
+    url = "https://github.com/glench/vim-jinja2-syntax"
   }
 }
 
@@ -154,8 +159,9 @@ vim.cmd [[au FileType html ++once lua require("packer.load")({'ale'}, { ft = "ht
 vim.cmd [[au FileType markdown ++once lua require("packer.load")({'ale'}, { ft = "markdown" }, _G.packer_plugins)]]
 vim.cmd [[au FileType racket ++once lua require("packer.load")({'ale'}, { ft = "racket" }, _G.packer_plugins)]]
 vim.cmd [[au FileType tex ++once lua require("packer.load")({'ale'}, { ft = "tex" }, _G.packer_plugins)]]
-vim.cmd [[au FileType vim ++once lua require("packer.load")({'ale'}, { ft = "vim" }, _G.packer_plugins)]]
 vim.cmd [[au FileType sh ++once lua require("packer.load")({'ale'}, { ft = "sh" }, _G.packer_plugins)]]
+vim.cmd [[au FileType elixir ++once lua require("packer.load")({'ale'}, { ft = "elixir" }, _G.packer_plugins)]]
+vim.cmd [[au FileType vim ++once lua require("packer.load")({'ale'}, { ft = "vim" }, _G.packer_plugins)]]
 vim.cmd [[au FileType c ++once lua require("packer.load")({'ale'}, { ft = "c" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")

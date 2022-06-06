@@ -12,7 +12,7 @@ return require('packer').startup(function()
   -- Also run code after load (see the "config" key)
   use {
     'w0rp/ale',
-    ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'markdown', 'racket', 'vim', 'tex'},
+    ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'markdown', 'racket', 'vim', 'tex', 'elixir'},
     cmd = 'ALEEnable',
     config = 'vim.cmd[[ALEEnable]]'
   }
@@ -22,16 +22,14 @@ return require('packer').startup(function()
   -- Telescope
   use { 'nvim-telescope/telescope.nvim', requires = { {'nvim-lua/plenary.nvim'} }}
 
-  -- Everforest 
+  -- Everforest
   use { 'sainnhe/everforest' } 
   
-  -- Airline
-  use {'vim-airline/vim-airline'}
 
   -- Nvim Dashboard
   use { 'glepnir/dashboard-nvim' }
 
-  -- Nvim tree  
+  -- Nvim tree
   use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons', }, tag = 'nightly' } 
 
   -- COC
@@ -45,5 +43,17 @@ return require('packer').startup(function()
 
   -- Nunjucks Support
   use { 'glench/vim-jinja2-syntax'}
+
+  -- Lualine
+  use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
+
+  -- Git Gutter
+  use {'airblade/vim-gitgutter'}
+
+  -- Typing
+  use {'alvan/vim-closetag'}
+  use {'jiangmiao/auto-pairs'}
+
+
 end)
 

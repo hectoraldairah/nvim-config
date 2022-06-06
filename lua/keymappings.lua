@@ -22,7 +22,8 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
-
+-- Save faster
+keymap("n", "<leader>w", "<cmd>:w<CR>", opts) 
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
@@ -41,4 +42,13 @@ keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 -- Telescope
 keymap("n", "<C-o>", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
-keymap("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
+keymap("n", "<C-p>", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
+
+-- FloatTerm
+keymap("n", "<leader>fn", "<cmd>:FloatermNew<cr>", opts)
+ 
+
+-- NvimTree
+keymap("n", "<C-n>", "<cmd>:NvimTreeToggle<cr>", opts)
+keymap("n", "<leader>f", "<cmd>:NvimTreeFindFile<cr>", opts)
+keymap("n", "<leader>r", "<cmd>:NvimTreeRefresh<cr>", opts)
