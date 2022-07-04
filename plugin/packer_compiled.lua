@@ -78,20 +78,65 @@ _G.packer_plugins = {
     path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/opt/ale",
     url = "https://github.com/w0rp/ale"
   },
-  ["coc.nvim"] = {
+  ["auto-pairs"] = {
     loaded = true,
-    path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/coc.nvim",
-    url = "https://github.com/neoclide/coc.nvim"
+    path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/auto-pairs",
+    url = "https://github.com/jiangmiao/auto-pairs"
   },
-  ["dashboard-nvim"] = {
+  catppuccin = {
     loaded = true,
-    path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/dashboard-nvim",
-    url = "https://github.com/glepnir/dashboard-nvim"
+    path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/catppuccin",
+    url = "https://github.com/catppuccin/nvim"
   },
-  everforest = {
+  ["cmp-buffer"] = {
     loaded = true,
-    path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/everforest",
-    url = "https://github.com/sainnhe/everforest"
+    path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    url = "https://github.com/hrsh7th/cmp-buffer"
+  },
+  ["cmp-cmdline"] = {
+    loaded = true,
+    path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
+    url = "https://github.com/hrsh7th/cmp-cmdline"
+  },
+  ["cmp-nvim-lsp"] = {
+    loaded = true,
+    path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
+  ["cmp-path"] = {
+    loaded = true,
+    path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/cmp-path",
+    url = "https://github.com/hrsh7th/cmp-path"
+  },
+  ["lspsaga.nvim"] = {
+    loaded = true,
+    path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
+    url = "https://github.com/glepnir/lspsaga.nvim"
+  },
+  ["lua-dev.nvim"] = {
+    loaded = true,
+    path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/lua-dev.nvim",
+    url = "https://github.com/folke/lua-dev.nvim"
+  },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
+  ["nvim-cmp"] = {
+    loaded = true,
+    path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-lsp-installer"] = {
+    loaded = true,
+    path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
+    url = "https://github.com/williamboman/nvim-lsp-installer"
+  },
+  ["nvim-lspconfig"] = {
+    loaded = true,
+    path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-transparent"] = {
     loaded = true,
@@ -128,15 +173,25 @@ _G.packer_plugins = {
     path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["vim-closetag"] = {
+    loaded = true,
+    path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/vim-closetag",
+    url = "https://github.com/alvan/vim-closetag"
+  },
   ["vim-floaterm"] = {
     loaded = true,
     path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/vim-floaterm",
     url = "https://github.com/voldikss/vim-floaterm"
   },
-  ["vim-jinja2-syntax"] = {
+  ["vim-gitgutter"] = {
     loaded = true,
-    path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/vim-jinja2-syntax",
-    url = "https://github.com/glench/vim-jinja2-syntax"
+    path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
+    url = "https://github.com/airblade/vim-gitgutter"
+  },
+  ["vim-prettier"] = {
+    loaded = true,
+    path = "/Users/hectoraldairaguilarhernandez/.local/share/nvim/site/pack/packer/start/vim-prettier",
+    url = "https://github.com/prettier/vim-prettier"
   }
 }
 
@@ -151,18 +206,20 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType elixir ++once lua require("packer.load")({'ale'}, { ft = "elixir" }, _G.packer_plugins)]]
+vim.cmd [[au FileType vim ++once lua require("packer.load")({'ale'}, { ft = "vim" }, _G.packer_plugins)]]
+vim.cmd [[au FileType jinja2 ++once lua require("packer.load")({'ale'}, { ft = "jinja2" }, _G.packer_plugins)]]
+vim.cmd [[au FileType nunjucks ++once lua require("packer.load")({'ale'}, { ft = "nunjucks" }, _G.packer_plugins)]]
+vim.cmd [[au FileType cmake ++once lua require("packer.load")({'ale'}, { ft = "cmake" }, _G.packer_plugins)]]
+vim.cmd [[au FileType cpp ++once lua require("packer.load")({'ale'}, { ft = "cpp" }, _G.packer_plugins)]]
 vim.cmd [[au FileType zsh ++once lua require("packer.load")({'ale'}, { ft = "zsh" }, _G.packer_plugins)]]
 vim.cmd [[au FileType bash ++once lua require("packer.load")({'ale'}, { ft = "bash" }, _G.packer_plugins)]]
-vim.cmd [[au FileType cpp ++once lua require("packer.load")({'ale'}, { ft = "cpp" }, _G.packer_plugins)]]
-vim.cmd [[au FileType cmake ++once lua require("packer.load")({'ale'}, { ft = "cmake" }, _G.packer_plugins)]]
+vim.cmd [[au FileType c ++once lua require("packer.load")({'ale'}, { ft = "c" }, _G.packer_plugins)]]
+vim.cmd [[au FileType sh ++once lua require("packer.load")({'ale'}, { ft = "sh" }, _G.packer_plugins)]]
 vim.cmd [[au FileType html ++once lua require("packer.load")({'ale'}, { ft = "html" }, _G.packer_plugins)]]
 vim.cmd [[au FileType markdown ++once lua require("packer.load")({'ale'}, { ft = "markdown" }, _G.packer_plugins)]]
 vim.cmd [[au FileType racket ++once lua require("packer.load")({'ale'}, { ft = "racket" }, _G.packer_plugins)]]
 vim.cmd [[au FileType tex ++once lua require("packer.load")({'ale'}, { ft = "tex" }, _G.packer_plugins)]]
-vim.cmd [[au FileType sh ++once lua require("packer.load")({'ale'}, { ft = "sh" }, _G.packer_plugins)]]
-vim.cmd [[au FileType elixir ++once lua require("packer.load")({'ale'}, { ft = "elixir" }, _G.packer_plugins)]]
-vim.cmd [[au FileType vim ++once lua require("packer.load")({'ale'}, { ft = "vim" }, _G.packer_plugins)]]
-vim.cmd [[au FileType c ++once lua require("packer.load")({'ale'}, { ft = "c" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

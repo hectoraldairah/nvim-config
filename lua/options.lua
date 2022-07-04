@@ -2,7 +2,7 @@ local options = {
   backup = false,                          -- creates a backup file
   clipboard = "unnamedplus",               -- allows neovim to access the system clipboard
   cmdheight = 2,                           -- more space in the neovim command line for displaying messages
-  completeopt = { "menuone", "noselect" }, -- mostly just for cmp
+  completeopt = {  "menuone", "noselect", "menu" }, -- mostly just for cmp
   conceallevel = 0,                        -- so that `` is visible in markdown files
   -- colorcolumn = "80",
   -- colorcolumn = "120",
@@ -18,7 +18,7 @@ local options = {
   splitright = true,                       -- force all vertical splits to go to the right of current window
   swapfile = false,                        -- creates a swapfile
   termguicolors = true,                    -- set term gui colors (most terminals support this)
-  timeoutlen = 100,                        -- time to wait for a mapped sequence to complete (in milliseconds)
+  timeoutlen = 300,                        -- time to wait for a mapped sequence to complete (in milliseconds)
   undofile = true,                         -- enable persistent undo
   updatetime = 300,                        -- faster completion (4000ms default)
   writebackup = false,                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
@@ -50,3 +50,4 @@ end
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
+vim.cmd('au BufNewFile,BufRead *.njk | set ft=html | endif')

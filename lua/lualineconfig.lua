@@ -3,7 +3,7 @@ require("plenary.reload").reload_module("lualine", true)
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'auto',
+    theme = 'catppuccin',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {},

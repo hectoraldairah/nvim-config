@@ -23,7 +23,7 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Save faster
-keymap("n", "<leader>w", "<cmd>:w<CR>", opts) 
+keymap("n", "<leader>w", "<cmd>:w!<CR>", opts) 
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
@@ -41,7 +41,7 @@ keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 -- Telescope
-keymap("n", "<C-o>", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
+keymap("n", "<C-o>", "<cmd>lua require('telescope.builtin').find_files({hidden=true}) <cr>", opts)
 keymap("n", "<C-p>", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
 
 -- FloatTerm
@@ -52,3 +52,11 @@ keymap("n", "<leader>fn", "<cmd>:FloatermNew<cr>", opts)
 keymap("n", "<C-n>", "<cmd>:NvimTreeToggle<cr>", opts)
 keymap("n", "<leader>f", "<cmd>:NvimTreeFindFile<cr>", opts)
 keymap("n", "<leader>r", "<cmd>:NvimTreeRefresh<cr>", opts)
+keymap("n", "<C-m>", "<cmd>:NvimTreeFocus<cr>", opts)
+
+-- LSP Saga
+keymap("n", "gh", "<cmd>:Lspsaga lsp_finder<cr>", opts)
+keymap("n", "K", "<cmd>Lspsaga hover_doc<cr>", opts)
+keymap("n", "gr", "<cmd>Lspsaga rename<cr>", opts)
+keymap("n", "gs", "<cmd>Lspsaga signature_help<cr>", opts)
+keymap("n", "gd", "<cmd>Lspsaga preview_definition<cr>", opts)
