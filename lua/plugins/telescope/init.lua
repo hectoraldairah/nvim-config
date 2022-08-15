@@ -1,3 +1,10 @@
+local actions    = require('telescope.actions')
+local previewers = require('telescope.previewers')
+local builtin    = require('telescope.builtin')
+
+require('telescope').load_extension('fzf')
+require('telescope').load_extension('repo')
+
 local status_ok, telescope = pcall(require, "telescope")
 if not status_ok then
   return
@@ -6,6 +13,29 @@ end
 
 telescope.setup{
   defaults = {
+    vimgrep_arguments = {
+     'rg',
+     '--color=never',
+     '--no-heading',
+     '--with-filename',
+     '--line-number',
+     '--column',
+     '--smart-case'
+    },
+    layout_config = {
+      horizontal = {
+        preview_cutoff = 120,
+      },
+      prompt_position = "top",
+    },
+    file_sorter = require('telescope.sorters').get_fzy_sorter,
+    prompt_prefix = ' 🔍 ',
+    color_devicons  = true,
+    sorting_strategy = "ascending",
+    file_previewer   = require('telescope.previewers').vim_buffer_cat.new,
+    grep_previewer   = require('telescope.previewers').vim_buffer_vimgrep.new,
+    qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
+
     -- Default configuration for telescope goes here:
     -- config_key = value,
     path_display = { "smart" },
@@ -59,6 +89,11 @@ telescope.setup{
     -- builtin picker
   },
   extensions = {
+    fzf = {
+      override_generic_sorter = false,
+      override_file_sorter = true,
+      case_mode = "smart_case",
+    }
     -- Your extension configuration goes here:
     -- extension_name = {
     --   extension_config_key = value,

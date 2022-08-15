@@ -1,69 +1,72 @@
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local compile_path = install_path .. "/plugin/packer_compiled.lua"
+local packer_bootstrap = nil
 
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+    install_path })
 end
 
-return require('packer').startup(function()
+return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  -- Load on a combination of conditions: specific filetypes or commands
-  -- Also run code after load (see the "config" key)
-  use {
-    'w0rp/ale',
-    ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'markdown', 'racket', 'vim', 'tex', 'elixir', 'nunjucks', 'jinja2'},
-    cmd = 'ALEEnable',
-    config = 'vim.cmd[[ALEEnable]]'
-  }
-  -- LSP
-  use {
-    'williamboman/nvim-lsp-installer',
-    'neovim/nvim-lspconfig',
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-path',
-    'hrsh7th/cmp-cmdline',
-    'hrsh7th/nvim-cmp'
-  }
-
-  -- LSP Saga
-  use { 'glepnir/lspsaga.nvim', branch = 'main'}
-
-  -- Telescope
-  use { 'nvim-telescope/telescope.nvim', requires = { {'nvim-lua/plenary.nvim'} }}
-
-  -- Tranparent Mode
-  use { 'xiyaowong/nvim-transparent'}
-
-  -- FloatTerm
-  use { 'voldikss/vim-floaterm' }
-
-  -- Lualine
-  use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
-
-  -- Git Gutter
-  use {'airblade/vim-gitgutter'}
-
-  -- Typing
-  use {'alvan/vim-closetag'}
-  use {'jiangmiao/auto-pairs'}
-
-  -- Prettier
-  use { 'prettier/vim-prettier', run = 'yarn install --frozen-lockfile --production' }
+  -- Needed to load first
+  use { 'lewis6991/impatient.nvim' }
+  use { 'nathom/filetype.nvim' }
+  use { 'nvim-lua/plenary.nvim' }
+  use { 'kyazdani42/nvim-web-devicons' }
 
   -- Colorschemes
   use { "catppuccin/nvim", as = "catppuccin" }
 
-  -- NvimTree
-  use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons', }, tag = 'nightly' }
-
   -- Treesitter
-  use { 'nvim-treesitter/nvim-treesitter'}
+  use { 'nvim-treesitter/nvim-treesitter', config = "require('plugins.treesitter')" }
+  use { 'nvim-treesitter/nvim-treesitter-textobjects', after = { 'nvim-treesitter' } }
+  use { 'RRethy/nvim-treesitter-textsubjects', after = { 'nvim-treesitter' } }
+  use { 'm-demare/hlargs.nvim', config = function() require('hlargs').setup() end }
 
-  -- Lua Dev
-  use { 'folke/lua-dev.nvim' }
+  -- Navigating (Telescope/Tree/Refactor)
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use { 'nvim-telescope/telescope.nvim',
+    config = "require('plugins/telescope')",
+    requires = {
+      { 'nvim-lua/popup.nvim' },
+      { 'nvim-lua/plenary.nvim' },
+      { 'nvim-telescope/telescope-fzf-native.nvim' }
+    }
+  }
+  use { 'cljoly/telescope-repo.nvim' }
+  use { 'kyazdani42/nvim-tree.lua', config = "require('plugins.tree')" }
+  use { 'gbprod/stay-in-place.nvim',
+    config = function()
+      require('stay-in-place').setup({})
+    end
+  }
+
+  -- LSP Base
+  use { 'williamboman/mason.nvim' }
+  use { 'williamboman/mason-lspconfig.nvim' }
+  use { 'neovim/nvim-lspconfig' }
+
+  -- LSP Cmp
+  use { 'hrsh7th/nvim-cmp', event = 'InsertEnter', config = "require('plugins.cmp')" }
+  use { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' }
+  use { 'hrsh7th/cmp-nvim-lsp', after = 'cmp-nvim-lua' }
+  use { 'hrsh7th/cmp-buffer', after = 'cmp-nvim-lsp' }
+  use { 'hrsh7th/cmp-path', after = 'cmp-buffer' }
+  use { 'hrsh7th/cmp-cmdline', after = 'cmp-path' }
+  use { 'saadparwaiz1/cmp_luasnip', after = 'cmp-cmdline' }
+
+   -- Snippets & Language & Syntax
+  use { 'windwp/nvim-autopairs', after = { 'nvim-treesitter', 'nvim-cmp' }, config = "require('plugins.autopairs')" }
+  use { 'p00f/nvim-ts-rainbow', after = { 'nvim-treesitter' } }
+  use { 'lukas-reineke/indent-blankline.nvim', config = "require('plugins.indent')" }
+  use { 'NvChad/nvim-colorizer.lua', config = "require('plugins.colorizer')" }
+  use { 'L3MON4D3/LuaSnip', requires = { 'rafamadriz/friendly-snippets' }, after = 'cmp_luasnip' }
+  use { 'L3MON4D3/LuaSnip', requires = { 'rafamadriz/friendly-snippets' }, after = 'cmp' }
+
 
 end)
 

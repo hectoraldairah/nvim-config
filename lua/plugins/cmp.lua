@@ -1,10 +1,16 @@
+
 local cmp = require'cmp'
+
+local snip_status_ok, luasnip = pcall(require, "luasnip")
+if not snip_status_ok then
+  return
+end
 
  cmp.setup({
     snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+          luasnip.lsp_expand(args.body)
       end,
     },
     window = {

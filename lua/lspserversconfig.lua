@@ -31,7 +31,6 @@ require'lspconfig'.tsserver.setup{
 
 --- HTML
 
-
 require'lspconfig'.html.setup {
   capabilities = capabilities,
   cmd = {"vscode-html-language-server", "--stdio" },
