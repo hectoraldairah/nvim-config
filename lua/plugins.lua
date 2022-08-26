@@ -20,6 +20,7 @@ return require('packer').startup(function(use)
 
   -- Colorschemes
   use { "catppuccin/nvim", as = "catppuccin" }
+  use "rebelot/kanagawa.nvim"
 
   -- Treesitter
   use { 'nvim-treesitter/nvim-treesitter', config = "require('plugins.treesitter')" }
@@ -67,6 +68,9 @@ return require('packer').startup(function(use)
   use { 'L3MON4D3/LuaSnip', requires = { 'rafamadriz/friendly-snippets' }, after = 'cmp_luasnip' }
   use { 'L3MON4D3/LuaSnip', requires = { 'rafamadriz/friendly-snippets' }, after = 'cmp' }
 
+  -- General
+  use { 'voldikss/vim-floaterm' }
+  use { 'nvim-lualine/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons'}, config = "require('plugins.lualine')" }
 
 end)
 

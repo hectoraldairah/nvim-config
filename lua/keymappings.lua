@@ -60,3 +60,7 @@ keymap("n", "K", "<cmd>Lspsaga hover_doc<cr>", opts)
 keymap("n", "gr", "<cmd>Lspsaga rename<cr>", opts)
 keymap("n", "gs", "<cmd>Lspsaga signature_help<cr>", opts)
 keymap("n", "gd", "<cmd>Lspsaga preview_definition<cr>", opts)
+
+-- FloatTerm
+keymap("n", "<leader>fn", "<cmd>FloatermNew<cr>", opts)
+keymap("n", "<leader>fb", "<cmd>FloatermNew<cr>", opts)
