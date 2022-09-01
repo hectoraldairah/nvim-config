@@ -27,6 +27,7 @@ return require('packer').startup(function(use)
   use { 'nvim-treesitter/nvim-treesitter-textobjects', after = { 'nvim-treesitter' } }
   use { 'RRethy/nvim-treesitter-textsubjects', after = { 'nvim-treesitter' } }
   use { 'm-demare/hlargs.nvim', config = function() require('hlargs').setup() end }
+  use { 'nvim-pack/nvim-spectre' }
 
   -- Navigating (Telescope/Tree/Refactor)
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
@@ -45,6 +46,8 @@ return require('packer').startup(function(use)
       require('stay-in-place').setup({})
     end
   }
+  use {'akinsho/bufferline.nvim', tag = "v2.*"}
+
 
   -- LSP Base
   use { 'williamboman/mason.nvim' }
@@ -60,17 +63,21 @@ return require('packer').startup(function(use)
   use { 'hrsh7th/cmp-cmdline', after = 'cmp-path' }
   use { 'saadparwaiz1/cmp_luasnip', after = 'cmp-cmdline' }
 
+  -- LSP Addons
+  use { 'stevearc/dressing.nvim', requires = 'MunifTanjim/nui.nvim', config = "require('plugins.dressing')" }
+
    -- Snippets & Language & Syntax
   use { 'windwp/nvim-autopairs', after = { 'nvim-treesitter', 'nvim-cmp' }, config = "require('plugins.autopairs')" }
   use { 'p00f/nvim-ts-rainbow', after = { 'nvim-treesitter' } }
   use { 'lukas-reineke/indent-blankline.nvim', config = "require('plugins.indent')" }
   use { 'NvChad/nvim-colorizer.lua', config = "require('plugins.colorizer')" }
   use { 'L3MON4D3/LuaSnip', requires = { 'rafamadriz/friendly-snippets' }, after = 'cmp_luasnip' }
-  use { 'L3MON4D3/LuaSnip', requires = { 'rafamadriz/friendly-snippets' }, after = 'cmp' }
 
   -- General
   use { 'voldikss/vim-floaterm' }
   use { 'nvim-lualine/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons'}, config = "require('plugins.lualine')" }
+  use { "folke/zen-mode.nvim", config = "require('plugins.zen')"}
+  use { 'folke/twilight.nvim', config = "require('plugins.twiligth')"}
 
 end)
 
