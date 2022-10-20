@@ -1,5 +1,5 @@
 local root_pattern = require'lspconfig'.util.root_pattern; 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 require("nvim-lsp-installer").setup({
     ensure_installed = {'typescript-language-server'},

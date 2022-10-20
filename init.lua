@@ -1,7 +1,7 @@
 pcall(require, 'impatient')
 require('packer_commands')
+require('colorscheme')
 require('options')
 require('keymappings')
-require('colorscheme')
 
 require('lsp.setup')
