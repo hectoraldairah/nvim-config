@@ -38,6 +38,8 @@ require('mini.pairs').setup()
 require('mini.jump2d').setup()
 require('mini.fuzzy').setup()
 require('mini.cursorword').setup()
-require('mini.completion').setup()
+require('mini.completion').setup({
+  lsp_completion = { source_func = 'omnifunc', auto_setup = false },
+})
 require('mini.comment').setup()
 require('mini.tabline').setup()

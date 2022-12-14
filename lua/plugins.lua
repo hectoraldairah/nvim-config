@@ -22,6 +22,10 @@ return require('packer').startup(function(use)
   use { "catppuccin/nvim", as = "catppuccin" }
   use "EdenEast/nightfox.nvim" -- Packer
   use "rebelot/kanagawa.nvim"
+  use 'olivercederborg/poimandres.nvim'
+  use 'andersevenrud/nordic.nvim'
+  use 'navarasu/onedark.nvim'
+  use 'sam4llis/nvim-tundra'
 
   -- Treesitter
   use { 'nvim-treesitter/nvim-treesitter', config = "require('plugins.treesitter')" }
@@ -64,6 +68,7 @@ return require('packer').startup(function(use)
 
   -- LSP Addons
   use { 'stevearc/dressing.nvim', requires = 'MunifTanjim/nui.nvim', config = "require('plugins.dressing')" }
+  use { 'glepnir/lspsaga.nvim', config = "require('plugins.lspsaga')" }
 
   -- Snippets & Language & Syntax
   use { 'windwp/nvim-autopairs', after = { 'nvim-treesitter', 'nvim-cmp' }, config = "require('plugins.autopairs')" }
@@ -71,6 +76,8 @@ return require('packer').startup(function(use)
   use { 'lukas-reineke/indent-blankline.nvim', config = "require('plugins.indent')" }
   use { 'NvChad/nvim-colorizer.lua', config = "require('plugins.colorizer')" }
   use { 'L3MON4D3/LuaSnip', requires = { 'rafamadriz/friendly-snippets' }, after = 'cmp_luasnip' }
+  use { 'jose-elias-alvarez/null-ls.nvim', config = "require('plugins.null-ls')" }
+  use { 'MunifTanjim/prettier.nvim', config = "require('plugins.prettier')" }
 
   -- General
   use { 'voldikss/vim-floaterm' }
@@ -79,5 +86,6 @@ return require('packer').startup(function(use)
   use { 'folke/twilight.nvim', config = "require('plugins.twilight')" }
   use { "xiyaowong/nvim-transparent", config = "require('plugins.transparent')" }
   use { 'echasnovski/mini.nvim', config = "require('plugins.mini')" }
+  use { 'eandrju/cellular-automaton.nvim' }
 
 end)

@@ -23,7 +23,7 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Save faster
-keymap("n", "<leader>w", "<cmd>:w!<CR>", opts) 
+keymap("n", "<leader>w", "<cmd>:w!<CR>", opts)
 
 -- Remove highlights
 keymap("n", "<CR>", ":noh<CR><CR>", opts)
@@ -64,7 +64,7 @@ keymap("n", "<C-m>", "<cmd>:NvimTreeFocus<cr>", opts)
 
 -- FloatTerm
 keymap("n", "<leader>fn", "<cmd>FloatermNew<cr>", opts)
-keymap("n", "<leader>fb", "<cmd>FloatermNew<cr>", opts)
+keymap("n", "<leader>fb", "<cmd>FloatermToggle<cr>", opts)
 
 -- Spectre
 keymap("n", "<Leader>sw", "<cmd>lua require('spectre').open_visual({select_word=true})<CR>", opts)
@@ -79,11 +79,19 @@ keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 keymap("v", "<leader>ca", "<cmd>'<,'>lua vim.lsp.buf.range_code_action()<CR>", opts)
 keymap("n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 keymap("n", "<leader>cf", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
-keymap("v", "<leader>cf", "<cmd>'<.'>lua vim.lsp.buf.format()<CR>", opts)
 keymap("n", "<leader>cl", "<cmd>lua vim.diagnostic.open_float({ border = 'rounded', max_width = 100 })<CR>", opts)
 keymap("n", "L", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 keymap("n", "]g", "<cmd>lua vim.diagnostic.goto_next({ float = { border = 'rounded', max_width = 100 }})<CR>", opts)
 keymap("n", "[g", "<cmd>lua vim.diagnostic.goto_prev({ float = { border = 'rounded', max_width = 100 }})<CR>", opts)
+-- Show line diagnostics
+keymap("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
+
+-- Show cursor diagnostic
+keymap("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true })
+
+
+-- Hover Doc
+keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
 
 -- Buffers
 keymap("n", "<Tab>", ":BufferNext<CR>", opts)
@@ -91,5 +99,3 @@ keymap("n", "gn", ":bn<CR>", opts)
 keymap("n", "<S-Tab>", ":BufferPrevious<CR>", opts)
 keymap("n", "gp", ":bp<CR>", opts)
 keymap("n", "<S-q>", ":BufferClose<CR>", opts)
-
-

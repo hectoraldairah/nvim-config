@@ -14,8 +14,8 @@ mason.setup {
 
 mason_lsp.setup {
   -- A list of servers to automatically install if they're not already installed
-  ensure_installed = {"bashls", "clangd", "cssls", "cssmodules_ls", "denols", "eslint", "html", "jsonls", "sumneko_lua",
-  "marksman", "prismals", "tsserver"},
+  ensure_installed = { "bashls", "clangd", "cssls", "cssmodules_ls", "denols", "eslint", "html", "jsonls", "sumneko_lua",
+    "marksman", "prismals", "tsserver"},
 
   -- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed.
   -- This setting has no relation with the `ensure_installed` setting.
@@ -32,7 +32,7 @@ local lspconfig = require("lspconfig")
 
 local handlers = {
   ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
-  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded "}),
+  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded " }),
   ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
     { virtual_text = true }),
 }
@@ -64,12 +64,12 @@ lspconfig.sumneko_lua.setup {
 }
 
 lspconfig.cssls.setup {
-  cmd = require('lsp.servers.cssls').cdm,
-  filetypes = require('lsp.servers.cssls').filetype,
+  cmd = require('lsp.servers.cssls').cmd,
+  filetypes = require('lsp.servers.cssls').filetypes,
   root_dir = require('lsp.servers.cssls').root_dir,
   settings = require('lsp.servers.cssls').settings,
-  on_attach = require('lsp.servers.cssls').on_attach,
-  handlers = require('lsp.servers.cssls').handlers,
+  single_file_support = true,
+  init_options = { provideFormatter = true },
 }
 
 lspconfig.astro.setup {
@@ -78,3 +78,23 @@ lspconfig.astro.setup {
   root_dir = require('lsp.servers.astro').root,
 }
 
+
+lspconfig.html.setup {
+  capabilities = require('lsp.servers.html').capabilities,
+  cmd = require('lsp.servers.html').cmd,
+  filetypes = require('lsp.servers.html').filetypes,
+  init_options = require('lsp.servers.html').init_options,
+}
+
+lspconfig.tailwindcss.setup {
+  capabilities = require('lsp.servers.tailwindcss').capabilities,
+  cmd = require('lsp.servers.tailwindcss').cmd,
+  filetypes = require('lsp.servers.tailwindcss').filetypes,
+}
+
+--
+-- lspconfig.emmet_ls.setup {
+--   capabilities = require('lsp.servers.html').capabilities,
+--   filetypes = require('lsp.servers.html').filetypes,
+--   init_options = require('lsp.servers.html').init_options,
+-- }
